@@ -1,127 +1,255 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Shikeb Ali - Full stack + Tech-Savvy Creative Problem Solver</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shikeb | AI Architect & E-Commerce Growth Strategist">
+    <title>Shikeb | AI & E-Commerce Architect</title>
+    
+    <!-- Fonts: Space Grotesk (Headings) + Inter (Body) for high readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-      .hero-section {
-        margin-top: 3%;
-      }
-      .footer-section {
-        padding: 10px 0;
-        background: #fff;
-        color:#212529;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-      .hero-text h2 {
-        font-size: 170px;
-        line-height: normal;
-        margin-bottom: 20px;
-        color: #fff;
-      }
-      .hero-text p {
-        font-size: 25px;
-        line-height: 1.3;
-      }
-      .hero-text p em{
-        font-size: 23px;
-      }
-      @media only screen and (max-width: 1600px) {
-        .hero-text h2 {
-          font-size: 120px;
+        /* --- CORE THEME --- */
+        :root {
+            --bg-dark: #050507;
+            --text-white: #ffffff;
+            --text-dim: #9ca3af;
+            --accent-cyan: #22d3ee;
+            --accent-purple: #a855f7;
+            --glass-panel: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
-      }
-      @media only screen and (max-width: 767px) {
-        .hero-text h2 {
-          font-size: 80px;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        .hero-text p {
-          font-size: 23px;
-          line-height: 1.3;
+
+        /* --- BACKGROUND FX --- */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
         }
-      }
+
+        /* --- LAYOUT CONTAINER --- */
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-family: var(--font-head); font-weight: 700; color: var(--text-white); }
+        
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        p { color: var(--text-dim); margin-bottom: 1rem; }
+
+        /* --- HEADER SECTION --- */
+        header {
+            margin-bottom: 5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 3rem;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
+        .tagline { font-size: 1.4rem; color: var(--text-white); opacity: 0.9; max-width: 600px; }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent-cyan);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+        .dot { height: 8px; width: 8px; background-color: var(--accent-cyan); border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px var(--accent-cyan); }
+
+        /* --- SERVICES GRID (The 3 Second Hook) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .service-card {
+            background: var(--glass-panel);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .service-card i { font-size: 1.5rem; color: var(--accent-purple); margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .service-card p { font-size: 0.9rem; line-height: 1.5; margin-bottom: 0; }
+
+        /* --- TECH STACK (Compact List) --- */
+        .tech-section { margin-bottom: 5rem; }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tech-pill {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            font-family: var(--font-head);
+        }
+        .tech-pill:hover { color: var(--text-white); border-color: var(--text-dim); }
+
+        /* --- FOOTER / CTA --- */
+        .cta-section {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .email-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--text-white);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .email-btn:hover { background: var(--accent-cyan); transform: scale(1.05); }
+
+        /* --- MOBILE --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .wrapper { padding: 3rem 1.2rem; }
+            .tagline { font-size: 1.1rem; }
+        }
     </style>
-  </head>
-  <body>
-    <section class="hero-section spad">
-      <div class="container-fluid">
-        <div class="col-xl-10 offset-xl-1">
-          <div class="hero-text">
-            <div class="row">
-              <div class="col-lg-8">
-               <span class="badge text-bg-warning rounded-pill"> Next.js, Laravel, TypeScript ..</span>
-                <p><em>I transform ideas into tangible products.</em></p>
-                <h2>Shikeb Ali</h2>
-                <p>
-                 A seasoned sr. engineer with 10+ years of experience, I've spearheaded the development of multiple high-performing e-commerce platforms. <br> My ability to translate business objectives into technical solutions drives exceptional results
-                </p>
-              </div>
+</head>
+<body>
+
+    <!-- Subtle background light -->
+    <div class="bg-glow"></div>
+
+    <div class="wrapper">
+        
+        <!-- Header: The "3-Second" Impact -->
+        <header>
+            <div class="availability"><span class="dot"></span> Available for new contracts</div>
+            <h1>Shikeb.</h1>
+            <p class="tagline">I scale brands with <strong>E-Commerce Intelligence</strong> and streamline operations with <strong>AI Automation</strong>.</p>
+            <div style="margin-top: 2rem; display: flex; gap: 15px;">
+                <!-- UPDATE YOUR CALENDLY LINK HERE -->
+                <a href="https://calendly.com/your-username" target="_blank" class="email-btn" style="margin:0; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Book a Consultation</a>
+                
+                <a href="#" style="color: var(--text-dim); display: flex; align-items: center; text-decoration: none; padding: 0 1rem;"><i class="fab fa-github"></i></a>
+                <a href="#" style="color: var(--text-dim); display: flex; align-items: center; text-decoration: none; padding: 0 1rem;"><i class="fab fa-linkedin"></i></a>
             </div>
-          </div>
-          <hr />
-          <div class="hero-info">
-            <h3>Languages &amp; Scripts:</h3>
-            <ul>
-              <li>PHP, JavaScript, Ruby, TypeScript</li>
-            </ul>
-            <h3>Stacks &amp; Frameworks:</h3>
-            <ul>
-              <li>
-                Laravel, Codeigniter, Ruby on Rails, WordPress, Shopify, <br />
-                React.js, Next.js, BootStrap, Material UI, Materialize RESTful API Node.js
-              </li>
-            </ul>
-            <h3>Database Engine:</h3>
-            <ul>
-              <li>MySQL, PostgresSQL, MongoDB</li>
-            </ul>
-            <h3>Code Management:</h3>
-            <ul>
-              <li>Github, Bitbucket, Gitlab</li>
-            </ul>
-            <h3>Scrum / Agile Environments:</h3>
-            <ul>
-              <li>Jira, Trello, Asana</li>
-            </ul>
-          </div>
+        </header>
+
+        <!-- Core Competencies -->
+        <span class="section-label">Core Solutions</span>
+        <div class="services-grid">
+            
+            <!-- Service 1: E-Commerce -->
+            <div class="service-card">
+                <i class="fas fa-chart-line" style="color: #22d3ee;"></i>
+                <h3>E-Commerce Growth Architect</h3>
+                <p>Scaling 8-figure brands. I don't just build Shopify stores; I engineer high-conversion revenue engines optimized for speed, SEO, and sales.</p>
+            </div>
+
+            <!-- Service 2: AI Systems -->
+            <div class="service-card">
+                <i class="fas fa-brain" style="color: #a855f7;"></i>
+                <h3>AI Business Integration</h3>
+                <p>Bridging the gap between legacy systems and modern AI. I help businesses integrate LLMs and machine learning to analyze data and predict trends.</p>
+            </div>
+
+            <!-- Service 3: Automation -->
+            <div class="service-card">
+                <i class="fas fa-robot" style="color: #f472b6;"></i>
+                <h3>Workflow Automation</h3>
+                <p>Stop doing busy work. I build intelligent automation pipelines (n8n, Python) that handle your operations on autopilot.</p>
+            </div>
+
         </div>
-      </div>
-    </section>
-    <div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Shikeb.com</span>
+
+        <!-- Technical Foundation -->
+        <span class="section-label">The Foundation (Tech Stack)</span>
+        <div class="tech-section">
+            <p style="margin-bottom: 1.5rem;">While I focus on strategy, my code is god-tier. Full-stack proficiency with a focus on performance.</p>
+            <div class="tech-list">
+                <div class="tech-pill">Shopify Plus</div>
+                <div class="tech-pill">Liquid</div>
+                <div class="tech-pill">Python & AI Agents</div>
+                <div class="tech-pill">OpenAI API</div>
+                <div class="tech-pill">JavaScript (ES6+)</div>
+                <div class="tech-pill">React</div>
+                <div class="tech-pill">Node.js</div>
+                <div class="tech-pill">PostgreSQL</div>
+                <div class="tech-pill">AWS / Serverless</div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to scale?</h2>
+            <p>You need an expert who understands both the code and the business logic. Let's build your future.</p>
+            <!-- UPDATE YOUR CALENDLY LINK HERE -->
+            <a href="https://calendly.com/your-username" target="_blank" class="email-btn">Schedule a Call</a>
+        </div>
+
+        <footer style="margin-top: 3rem; text-align: center; color: var(--glass-border); font-size: 0.8rem;">
+            &copy; 2026 Shikeb. All rights reserved.
+        </footer>
+
     </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
-  </footer>
-</div>
-    <!-- <footer class="footer-section">
-      <div class="container text-center">
-        <div class="copyright">
-          Shikeb.com Copyright© 2023 All rights reserved
-        </div>
-      </div>
-    </footer> -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+</body>
 </html>
